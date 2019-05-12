@@ -1,0 +1,10 @@
+name: RecordLayer
+maxRetriableTransactionAttempts: 5
+initialTransactionRetryDelay: 5ms
+maxTransactionRetryDelay: 500ms
+directoryCacheSize: 10
+traceLogGroup: default
+reverseDirectoryMaxTimePerTransaction: 2500ms
+reverseDirectoryMaxRowsPerTransaction: 11000
+clusterFilePath: src/test/resources/fdb_dev.cluster
+dataCenter: MR

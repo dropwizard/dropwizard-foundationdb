@@ -1,0 +1,4 @@
+name: FoundationDB
+apiVersion: 600
+clusterFilePath: src/test/resources/fdb_dev.cluster
+dataCenter: ST

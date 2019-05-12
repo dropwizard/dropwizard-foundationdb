@@ -1,0 +1,5 @@
+type: multi-file
+certificateChainFilePath: /path/to/file
+keyFilePath: /path/to/file
+password: secret
+verifyPeers: Root.CN=Some Root CA

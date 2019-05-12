@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>io.dropwizard</groupId>
+  <artifactId>dropwizard-foundationdb</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>11</source>
+          <target>11</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <packaging>jar</packaging>
+
+  <name>Dropwizard FoundationDB</name>
+  <description>Provides easy integration for Dropwizard applications with FoundationDB and various layer implementations.</description>
+  <url>https://github.com/dropwizard/dropwizard-foundationdb</url>
+
+  <licenses>
+    <license>
+      <name>Apache 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <scm>
+    <developerConnection>scm:git:git@github.com:dropwizard/dropwizard-foundationdb.git</developerConnection>
+    <connection>scm:git:https://github.com/dropwizard/dropwizard-foundationdb.git</connection>
+    <url>https://github.com/dropwizard/dropwizard-foundationdb</url>
+    <tag>HEAD</tag>
+  </scm>
+
+  <ciManagement>
+    <system>Travis CI</system>
+    <url>https://travis-ci.org/dropwizard/dropwizard-foundationdb</url>
+  </ciManagement>
+
+  <issueManagement>
+    <system>GitHub Issues</system>
+    <url>https://github.com/dropwizard/dropwizard-foundationdb/issues</url>
+  </issueManagement>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+    <site>
+      <id>dropwizard-foundationdb</id>
+      <url>http://dropwizard.github.io/dropwizard-foundationdb/${project.version}</url>
+    </site>
+  </distributionManagement>
+
+  <developers>
+    <developer>
+      <id>mzamani1</id>
+      <name>Michael Zamani</name>
+      <email>mzamani@apple.com</email>
+    </developer>
+  </developers>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <dropwizard.version>1.3.10</dropwizard.version>
+    <foundationdb.version>6.0.18</foundationdb.version>
+    <record-layer.version>2.6.67.0</record-layer.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.dropwizard</groupId>
+        <artifactId>dropwizard-bom</artifactId>
+        <version>${dropwizard.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>io.dropwizard</groupId>
+      <artifactId>dropwizard-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.foundationdb</groupId>
+      <artifactId>fdb-java</artifactId>
+      <version>${foundationdb.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.foundationdb</groupId>
+      <artifactId>fdb-extensions</artifactId>
+      <version>${record-layer.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.foundationdb</groupId>
+      <artifactId>fdb-record-layer-core</artifactId>
+      <version>${record-layer.version}</version>
+    </dependency>
+
+    <!-- test dependencies -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.dropwizard</groupId>
+      <artifactId>dropwizard-testing</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+</project>
