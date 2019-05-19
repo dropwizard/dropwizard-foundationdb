@@ -1,4 +1,6 @@
 # dropwizard-foundationdb
+[![Build Status](https://travis-ci.org/dropwizard/dropwizard-foundationdb.svg?branch=master)](https://travis-ci.org/dropwizard/dropwizard-foundationdb)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.dropwizard.modules/dropwizard-foundationdb/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.dropwizard.modules/dropwizard-foundationdb/)
 
 Provides easy integration for Dropwizard applications with [FoundationDB](https://apple.github.io/foundationdb/) and various layers. 
 
