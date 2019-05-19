@@ -1,19 +1,31 @@
 dist: xenial
 language: java
-os:
-  - linux
 jdk:
   - openjdk8
   - openjdk11
 before_install:
-  - rm ~/.m2/settings.xml || true 
+  - rm ~/.m2/settings.xml || true
   - ulimit -c unlimited -S
-  - mvn -N io.takari:maven:wrapper
 after_success:
-  - bash .travis_after_success.sh
+  - bash ci/after_success.sh
 cache:
   directories:
-    - $HOME/.m2
-
-notifications:
-  email: false
+    - "$HOME/.m2"
+deploy:
+  - provider: script
+    script: bash ci/deploy-snapshot.sh
+    on:
+      repo: dropwizard/dropwizard-health
+      tags: false
+      branch: master
+      jdk: openjdk8
+  - provider: script
+    script: bash ci/deploy-release.sh
+    on:
+      repo: dropwizard/dropwizard-health
+      tags: true
+      jdk: openjdk8
+env:
+  global:
+    - secure: g7HmxelXRJlAXOSdPsDOCuA7M8B1Y9glmu/EMCA6uLP85lfQ5LCk0AVMTsfUij8H++8EgPfx/8tURL4Pc7mPALidSBOU7XnQfxcKQeyetcUhvwMiWdMop2SInwkyk98UPj2b+GJcnBUPhehZHhfgzMxHZSA0fbhe3az6qiukqQ5DBNXYgMDwwfYtbUkIaCpfZcqAki67uTdNnm3h/kAoOAq1I/bdNlrJHuWW4JPWyX8BJR9bkZkvw++UyTwVQ256+JHYrEY7OBY1bbNgcSspHu3GUYw0jt2zTLD5+xfRB0PXYbAR2wMqkR/YF/H6fvfdm9l/RYOb3JzCGwvL06gXOn+A2rvPAfvB53+gbbwNPjXnLiK+JjBl9/8WbcYmioR4uZAn6dPuY4je82MDs9KQw/hlXlhHtA89MRhau4eEgFx5J1aTRDMXtGAkQrThDOtyEbGSfDqnT9Od3svNyYtyGnMiDaYl+HkT5vQTJo/3sKBXLbChYIJOrcIAWRSKLsJNEHipkxUNN7Jz3hajiEvavhRioaan2ROGhAsb0VJ9IHWNt6J1ZYyYj4jW5hjXSak16qaXpV4Pm2kaWFWUsF7JSdJrJ++CLFBkAIOr1BJTpXIcfrehVLib0hW7pPTs+jmg3wfl1of36q5DtmOj9Cu8kFIOTMQH77YwWr2OX8DTs9g=
+    - secure: YJx41YCxvsZXHvw8/WgkeeNUkoLsCx85Wrvnshx3/V12UBvkdmF1ea+jzef7XMtwxMBKTFK7AW3vzAGH6xQ/At3Pc7ekaTTfb8BdleRF5xaeMwT3t3jVjAmARaZyvTkRlXxe92t05XhUS95KIROwaa3y1V0x1HIvlk0Y87PSfSxv+ieN9waASvwvB0jSFSgRY9yJGVFYgnooVOrqMuZFTJbBvIF5EhbUj0raK90YhsJB7nFO01s0/rWit4SRSWfGkjjLwsJ5BZfGXrICLqgXdhe+nuRykvOT/ir1As6mh1qJ2pn/U1h9PAl2Z8R5t2guXfjGS8McWPAbAzDaYeL6Mcwnei7wTyZQpZE7RjiItYIT4wc2AT5pnY6CM9tA0gRLP9pF9m4V1NuNMMiY7u4YM47Vmszyz2WEkV5D+4TZyez6uwHh5Q2S83JeCDhq6/rzEkB7k7uClP9HiNsKyd5vFE1O9VAT0t4W1Vv8vZxDk/9j6QO966aHI4Ah4Z1BXKjRXKcRQnyih2II0eMa6xtDQoSaA7DEO7f35zIdKusobRvtHdzHOV3RpRVjPxvEnwXX9qTlRqDq40c4k5pSaO/zlLnvdc93k5WNl0XfgV1eAdDtGqD/cEsQoQvQedmB8enIQSWZmrXpLjXu2MZGQXvx4Wq2OeuTaLWcKIcWs2XxkuY=
