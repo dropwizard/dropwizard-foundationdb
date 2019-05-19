@@ -8,7 +8,7 @@
 
   <groupId>io.dropwizard</groupId>
   <artifactId>dropwizard-foundationdb</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.3.11-1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>Dropwizard FoundationDB</name>
