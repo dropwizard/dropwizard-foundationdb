@@ -28,7 +28,7 @@ public class FoundationDBHealthCheckTest {
 
     @Before
     public void setUp() {
-        healthCheck = new FoundationDBHealthCheck(mockedDatabase, "health-checking", Duration.seconds(5), 5);
+        healthCheck = new FoundationDBHealthCheck(mockedDatabase, "FoundationDB", "health-checking", Duration.seconds(5), 5);
     }
 
     @Test

@@ -245,7 +245,7 @@ public class RecordLayerFactory {
         final InstrumentedFDBDatabase instrumentedDatabase = new InstrumentedFDBDatabase(factory, absoluteClusterFilePath, database,
                 metrics, name);
 
-        final FoundationDBHealthCheck healthCheck = new FoundationDBHealthCheck(instrumentedDatabase.database(), healthCheckSubspace,
+        final FoundationDBHealthCheck healthCheck = new FoundationDBHealthCheck(instrumentedDatabase.database(), name, healthCheckSubspace,
                 healthCheckTimeout, healthCheckRetries);
         healthChecks.register(name, healthCheck);
 

@@ -142,7 +142,7 @@ public class FoundationDBFactory {
         final Database database = new InstrumentedDatabase(fdb.open(absoluteClusterFilePath, actualExecutor), metrics, name);
         database.options().setDatacenterId(dataCenter);
 
-        final FoundationDBHealthCheck healthCheck = new FoundationDBHealthCheck(database, healthCheckSubspace, healthCheckTimeout,
+        final FoundationDBHealthCheck healthCheck = new FoundationDBHealthCheck(database, name, healthCheckSubspace, healthCheckTimeout,
                 healthCheckRetries);
         healthChecks.register(name, healthCheck);
 
