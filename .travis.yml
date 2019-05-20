@@ -24,6 +24,7 @@ deploy:
     on:
       repo: dropwizard/dropwizard-foundationdb
       tags: true
+      branch: release
       jdk: openjdk8
 env:
   global:
