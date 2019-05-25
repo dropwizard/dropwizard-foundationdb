@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-  xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.dropwizard.modules</groupId>
   <artifactId>dropwizard-foundationdb</artifactId>
-  <version>1.3.11-1-SNAPSHOT</version>
+  <version>1.3.11-1</version>
   <packaging>jar</packaging>
 
   <name>Dropwizard FoundationDB</name>
@@ -27,7 +24,7 @@
     <developerConnection>scm:git:git@github.com:dropwizard/dropwizard-foundationdb.git</developerConnection>
     <connection>scm:git:https://github.com/dropwizard/dropwizard-foundationdb.git</connection>
     <url>https://github.com/dropwizard/dropwizard-foundationdb</url>
-    <tag>HEAD</tag>
+    <tag>dropwizard-foundationdb-1.3.11-1</tag>
   </scm>
 
   <ciManagement>
