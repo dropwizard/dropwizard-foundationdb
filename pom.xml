@@ -6,9 +6,9 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.dropwizard</groupId>
+  <groupId>io.dropwizard.modules</groupId>
   <artifactId>dropwizard-foundationdb</artifactId>
-  <version>1.3.11-2-SNAPSHOT</version>
+  <version>1.3.11-1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>Dropwizard FoundationDB</name>

@@ -33,7 +33,7 @@ Maven:
 
 Gradle:
 ```groovy
-compile "io.dropwizard:dropwizard-foundationdb:$dropwizardVersion"
+compile "io.dropwizard.modules:dropwizard-foundationdb:$dropwizardVersion"
 ```
 
 ### Foundation DB Usage
