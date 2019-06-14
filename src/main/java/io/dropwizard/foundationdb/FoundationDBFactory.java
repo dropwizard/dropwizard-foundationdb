@@ -138,18 +138,37 @@ public class FoundationDBFactory {
         security.filter(SecurityFactory::isEnabled)
                 .ifPresent(securityConf -> securityConf.addSecurityConfigurations(fdb.options()));
 
-        // Create an instrumented FDB Database
-        final Database database = new InstrumentedDatabase(fdb.open(absoluteClusterFilePath, actualExecutor), metrics, name);
-        database.options().setDatacenterId(dataCenter);
+        final Database database = buildDatabase(fdb, absoluteClusterFilePath, actualExecutor);
 
+        final Database instrumentedDatabase = instrumentDatabase(database, metrics);
+
+        instrumentedDatabase.options().setDatacenterId(dataCenter);
+
+        registerHealthCheck(healthChecks, database);
+
+        manageDatabase(lifecycle, fdb);
+
+        log.info("Finished setting up fdbDatabase={}", name);
+
+        return instrumentedDatabase;
+    }
+
+    protected Database buildDatabase(final FDB fdb, final String absoluteClusterFilePath, final Executor executor) {
+        return fdb.open(absoluteClusterFilePath, executor);
+    }
+
+    protected Database instrumentDatabase(final Database database, final MetricRegistry metrics) {
+        return new InstrumentedDatabase(database, metrics, name);
+    }
+
+    protected void registerHealthCheck(final HealthCheckRegistry healthChecks, final Database database) {
         final FoundationDBHealthCheck healthCheck = new FoundationDBHealthCheck(database, name, healthCheckSubspace, healthCheckTimeout,
                 healthCheckRetries);
+
         healthChecks.register(name, healthCheck);
+    }
 
+    protected void manageDatabase(final LifecycleEnvironment lifecycle, final FDB fdb) {
         lifecycle.manage(new FoundationDBManager(fdb, name));
-
-        log.info("Finished setting up fdbDatabase={}", database);
-
-        return database;
     }
 }
