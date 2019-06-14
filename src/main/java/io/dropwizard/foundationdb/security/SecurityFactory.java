@@ -12,7 +12,6 @@ public abstract class SecurityFactory implements Discoverable {
     @NotEmpty
     @JsonProperty
     private String password;
-    @NotEmpty
     @JsonProperty
     private String verifyPeers;
     @NotEmpty

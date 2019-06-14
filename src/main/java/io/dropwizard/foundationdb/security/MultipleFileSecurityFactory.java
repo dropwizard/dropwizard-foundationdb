@@ -38,7 +38,9 @@ public class MultipleFileSecurityFactory extends SecurityFactory {
     public void addSecurityConfigurations(final NetworkOptions networkOptions) {
         networkOptions.setTLSPassword(getPassword());
         networkOptions.setTLSCaPath(getCaFilePath());
-        networkOptions.setTLSVerifyPeers(getVerifyPeers().getBytes());
+        if (getVerifyPeers() != null) {
+            networkOptions.setTLSVerifyPeers(getVerifyPeers().getBytes());
+        }
         networkOptions.setTLSCertPath(getCertificateChainFilePath());
         networkOptions.setTLSKeyPath(getKeyFilePath());
     }

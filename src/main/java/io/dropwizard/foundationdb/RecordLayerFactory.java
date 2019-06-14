@@ -222,6 +222,23 @@ public class RecordLayerFactory {
         security.filter(SecurityFactory::isEnabled)
                 .ifPresent(securityConf -> securityConf.addSecurityConfigurations(fdb.options()));
 
+        final FDBDatabaseFactory factory = buildFDBDatabaseFactory(networkExecutor, executor);
+
+        final String absoluteClusterFilePath = new File(clusterFilePath).getAbsolutePath();
+        final FDBDatabase database = buildFDBDatabase(factory, absoluteClusterFilePath);
+
+        final FDBDatabase instrumentedDatabase = instrumentFDBDatabase(factory, absoluteClusterFilePath, database, metrics);
+
+        registerHealthCheck(healthChecks, database);
+
+        manageFDBDatabase(lifecycle, database);
+
+        log.info("Finished setting up record layer database={}", name);
+
+        return instrumentedDatabase;
+    }
+
+    protected FDBDatabaseFactory buildFDBDatabaseFactory(final Executor networkExecutor, final Executor executor) {
         final FDBDatabaseFactory factory = FDBDatabaseFactory.instance();
         factory.setMaxAttempts(maxRetriableTransactionAttempts);
         factory.setInitialDelayMillis(initialTransactionRetryDelay.toMilliseconds());
@@ -232,27 +249,34 @@ public class RecordLayerFactory {
         factory.setTrace(traceDirectory, traceLogGroup);
         factory.setDatacenterId(dataCenter);
 
-        if (executor != null) {
-            factory.setExecutor(executor);
-        }
         if (networkExecutor != null) {
             factory.setNetworkExecutor(networkExecutor);
         }
 
-        final String absoluteClusterFilePath = new File(clusterFilePath).getAbsolutePath();
-        final FDBDatabase database = factory.getDatabase(absoluteClusterFilePath);
+        if (executor != null) {
+            factory.setExecutor(executor);
+        }
 
-        final InstrumentedFDBDatabase instrumentedDatabase = new InstrumentedFDBDatabase(factory, absoluteClusterFilePath, database,
-                metrics, name);
+        return factory;
+    }
 
-        final FoundationDBHealthCheck healthCheck = new FoundationDBHealthCheck(instrumentedDatabase.database(), name, healthCheckSubspace,
+    protected FDBDatabase buildFDBDatabase(final FDBDatabaseFactory factory, final String absoluteClusterFilePath) {
+        return factory.getDatabase(absoluteClusterFilePath);
+    }
+
+    protected FDBDatabase instrumentFDBDatabase(final FDBDatabaseFactory factory, final String absoluteClusterFilePath,
+                                                final FDBDatabase database, final MetricRegistry metrics) {
+        return new InstrumentedFDBDatabase(factory, absoluteClusterFilePath, database, metrics, name);
+    }
+
+    protected void registerHealthCheck(final HealthCheckRegistry healthChecks, final FDBDatabase database) {
+        final FoundationDBHealthCheck healthCheck = new FoundationDBHealthCheck(database.database(), name, healthCheckSubspace,
                 healthCheckTimeout, healthCheckRetries);
+
         healthChecks.register(name, healthCheck);
+    }
 
-        lifecycle.manage(new RecordLayerManager(instrumentedDatabase, name));
-
-        log.info("Finished setting up record layer database={}", instrumentedDatabase);
-
-        return instrumentedDatabase;
+    protected void manageFDBDatabase(final LifecycleEnvironment lifecycle, final FDBDatabase database) {
+        lifecycle.manage(new RecordLayerManager(database, name));
     }
 }
