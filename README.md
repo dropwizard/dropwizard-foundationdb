@@ -24,6 +24,8 @@ dropwizard-foundationdb | Dropwizard v1.3.x  | Dropwizard v2.0.x
 ----------------------- | ------------------ | ------------------
 v1.3.x                  | :white_check_mark: | :white_check_mark:
 v1.4.x                  | :white_check_mark: | :white_check_mark:
+v1.5.x                  | :white_check_mark: | :white_check_mark:
+
 
 ## Usage
 Add dependency on library.
@@ -33,13 +35,13 @@ Maven:
 <dependency>
   <groupId>io.dropwizard.modules</groupId>
   <artifactId>dropwizard-foundationdb</artifactId>
-  <version>${dropwizard.version}</version>
+  <version>${dropwizard-foundationdb.version}</version>
 </dependency>
 ```
 
 Gradle:
 ```groovy
-compile "io.dropwizard.modules:dropwizard-foundationdb:$dropwizardVersion"
+compile "io.dropwizard.modules:dropwizard-foundationdb:$dropwizardFoundationDBVersion"
 ```
 
 ### Foundation DB Usage
