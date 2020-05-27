@@ -68,7 +68,7 @@
     <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
     <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
 
-    <dropwizard.version>2.0.9</dropwizard.version>
+    <dropwizard.version>2.0.10</dropwizard.version>
     <foundationdb.version>6.2.10</foundationdb.version>
     <record-layer.version>2.8.91.0</record-layer.version>
   </properties>
