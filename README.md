@@ -1,5 +1,6 @@
 # dropwizard-foundationdb
-[![Build Status](https://travis-ci.org/dropwizard/dropwizard-foundationdb.svg?branch=master)](https://travis-ci.org/dropwizard/dropwizard-foundationdb)
+[![Build](https://github.com/dropwizard/dropwizard-foundationdb/workflows/Build/badge.svg)](https://github.com/dropwizard/dropwizard-foundationdb/actions?query=workflow%3ABuild)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=dropwizard_dropwizard-foundationdb&metric=alert_status)](https://sonarcloud.io/dashboard?id=dropwizard_dropwizard-foundationdb)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.dropwizard.modules/dropwizard-foundationdb/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.dropwizard.modules/dropwizard-foundationdb/)
 
 Provides easy integration for Dropwizard applications with [FoundationDB](https://apple.github.io/foundationdb/) and various layers. 
