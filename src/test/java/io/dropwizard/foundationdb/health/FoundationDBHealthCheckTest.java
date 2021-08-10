@@ -32,6 +32,7 @@ public class FoundationDBHealthCheckTest {
     }
 
     @Test
+    @SuppressWarnings("unchecked")
     public void shouldReturnHealthyIfValidationSucceeds() {
         when(mockedDatabase.read(any())).thenReturn(mockedFuture);
 
@@ -42,6 +43,7 @@ public class FoundationDBHealthCheckTest {
     }
 
     @Test
+    @SuppressWarnings("unchecked")
     public void shouldReturnUnhealthyIfValidationFails() {
         when(mockedDatabase.read(any(Function.class))).thenThrow(new FDBException("something bad", 1234));
 
