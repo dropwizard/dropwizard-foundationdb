@@ -4,8 +4,8 @@ import com.apple.foundationdb.NetworkOptions;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @JsonTypeName("multi-file")

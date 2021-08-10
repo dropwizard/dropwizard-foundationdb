@@ -15,7 +15,7 @@ import io.dropwizard.foundationdb.managed.RecordLayerManager;
 import io.dropwizard.foundationdb.security.SecurityFactory;
 import io.dropwizard.lifecycle.setup.LifecycleEnvironment;
 import io.dropwizard.util.Duration;
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.validation.constraints.NotEmpty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
