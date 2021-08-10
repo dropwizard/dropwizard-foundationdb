@@ -2,6 +2,7 @@ package io.dropwizard.foundationdb.instrumented;
 
 import com.apple.foundationdb.Database;
 import com.apple.foundationdb.DatabaseOptions;
+import com.apple.foundationdb.EventKeeper;
 import com.apple.foundationdb.ReadTransaction;
 import com.apple.foundationdb.Transaction;
 
@@ -41,6 +42,11 @@ public class InstrumentedDatabase implements Database {
     @Override
     public Transaction createTransaction(final Executor e) {
         return database.createTransaction(e);
+    }
+
+    @Override
+    public Transaction createTransaction(final Executor e, final EventKeeper ek) {
+        return database.createTransaction(e, ek);
     }
 
     @Override
