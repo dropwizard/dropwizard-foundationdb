@@ -22,7 +22,7 @@ For more information on Record Layer, take a look at the documentation located h
 
 ## Dropwizard Version Support Matrix
 dropwizard-foundationdb | Dropwizard v1.3.x  | Dropwizard v2.0.x  | Dropwizard v2.1.x
------------------------ | ------------------ | ------------------ |
+----------------------- | ------------------ | ------------------ | ------------------
 v1.3.x                  | :white_check_mark: | :white_check_mark: | :white_check_mark:
 v1.4.x                  | :white_check_mark: | :white_check_mark: | :white_check_mark:
 v1.5.x                  | :white_check_mark: | :white_check_mark: | :white_check_mark:
