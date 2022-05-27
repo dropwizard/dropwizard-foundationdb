@@ -21,11 +21,12 @@ For more information on FoundationDB, take a look at the official documentation 
 For more information on Record Layer, take a look at the documentation located here: https://foundationdb.github.io/fdb-record-layer/
 
 ## Dropwizard Version Support Matrix
-dropwizard-foundationdb | Dropwizard v1.3.x  | Dropwizard v2.0.x
------------------------ | ------------------ | ------------------
-v1.3.x                  | :white_check_mark: | :white_check_mark:
-v1.4.x                  | :white_check_mark: | :white_check_mark:
-v1.5.x                  | :white_check_mark: | :white_check_mark:
+dropwizard-foundationdb | Dropwizard v1.3.x  | Dropwizard v2.0.x  | Dropwizard v2.1.x
+----------------------- | ------------------ | ------------------ |
+v1.3.x                  | :white_check_mark: | :white_check_mark: | :white_check_mark:
+v1.4.x                  | :white_check_mark: | :white_check_mark: | :white_check_mark:
+v1.5.x                  | :white_check_mark: | :white_check_mark: | :white_check_mark:
+v2.0.x                  | :question:         | :question:         | :white_check_mark:
 
 
 ## Usage
