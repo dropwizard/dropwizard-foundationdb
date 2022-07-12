@@ -73,7 +73,7 @@
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
     <dropwizard.version>2.1.1</dropwizard.version>
-    <foundationdb.version>7.1.14</foundationdb.version>
+    <foundationdb.version>7.1.15</foundationdb.version>
     <record-layer.version>2.8.110.0</record-layer.version>
   </properties>
 
