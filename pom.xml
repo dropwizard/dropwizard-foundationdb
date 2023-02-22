@@ -5,7 +5,7 @@
 
   <groupId>io.dropwizard.modules</groupId>
   <artifactId>dropwizard-foundationdb</artifactId>
-  <version>2.0.1-SNAPSHOT</version>
+  <version>2.0.1</version>
   <packaging>jar</packaging>
 
   <name>Dropwizard FoundationDB</name>
@@ -24,7 +24,7 @@
     <developerConnection>scm:git:git@github.com:dropwizard/dropwizard-foundationdb.git</developerConnection>
     <connection>scm:git:https://github.com/dropwizard/dropwizard-foundationdb.git</connection>
     <url>https://github.com/dropwizard/dropwizard-foundationdb</url>
-    <tag>HEAD</tag>
+    <tag>dropwizard-foundationdb-2.0.1</tag>
   </scm>
 
   <ciManagement>
