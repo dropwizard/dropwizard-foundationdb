@@ -3,6 +3,7 @@ package io.dropwizard.foundationdb.instrumented;
 import com.apple.foundationdb.Database;
 import com.apple.foundationdb.DatabaseOptions;
 import com.apple.foundationdb.EventKeeper;
+import com.apple.foundationdb.KeyRangeArrayResult;
 import com.apple.foundationdb.ReadTransaction;
 import com.apple.foundationdb.Tenant;
 import com.apple.foundationdb.Transaction;
@@ -118,6 +119,54 @@ public class InstrumentedDatabase implements Database {
     @Override
     public Tenant openTenant(Tuple tenantName, Executor e, EventKeeper eventKeeper) {
         return database.openTenant(tenantName, e, eventKeeper);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public CompletableFuture<byte[]> purgeBlobGranules(byte[] beginKey, byte[] endKey, long purgeVersion, boolean force, Executor e) {
+        return database.purgeBlobGranules(beginKey, endKey, purgeVersion, force, e);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public CompletableFuture<Void> waitPurgeGranulesComplete(byte[] purgeKey, Executor e) {
+        return database.waitPurgeGranulesComplete(purgeKey, e);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public CompletableFuture<Boolean> blobbifyRange(byte[] beginKey, byte[] endKey, Executor e) {
+        return database.blobbifyRange(beginKey, endKey, e);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public CompletableFuture<Boolean> unblobbifyRange(byte[] beginKey, byte[] endKey, Executor e) {
+        return database.unblobbifyRange(beginKey, endKey, e);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public CompletableFuture<KeyRangeArrayResult> listBlobbifiedRanges(byte[] beginKey, byte[] endKey, int rangeLimit, Executor e) {
+        return database.listBlobbifiedRanges(beginKey, endKey, rangeLimit, e);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public CompletableFuture<Long> verifyBlobRange(byte[] beginKey, byte[] endKey, long version, Executor e) {
+        return database.verifyBlobRange(beginKey, endKey, version, e);
     }
 
     /**
