@@ -5,8 +5,8 @@ import com.apple.foundationdb.NetworkOptions;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @JsonTypeName("multi-file")
 public class MultipleFileSecurityFactory extends SecurityFactory {

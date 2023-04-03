@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Objects;
 import java.util.UUID;
 
-import javax.validation.constraints.Min;
+import jakarta.validation.constraints.Min;
 
 /**
  * Performs health checks against a FoundationDB cluster by doing a simple set and clear in a single transaction.
