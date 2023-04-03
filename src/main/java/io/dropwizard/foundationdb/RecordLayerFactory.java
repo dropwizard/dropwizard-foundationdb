@@ -22,10 +22,10 @@ import java.io.File;
 import java.util.Optional;
 import java.util.concurrent.Executor;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 public class RecordLayerFactory {
     private static final Logger log = LoggerFactory.getLogger(RecordLayerFactory.class);
