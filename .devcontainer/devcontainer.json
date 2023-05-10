@@ -1,0 +1,32 @@
+{
+	"name": "Java",
+	"image": "mcr.microsoft.com/devcontainers/java:0-17",
+	"features": {
+		"ghcr.io/devcontainers/features/java:1": {
+			"version": "17",
+			"jdkDistro": "tem"
+		},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {
+			"moby": true,
+			"azureDnsAutoDetection": true,
+			"installDockerBuildx": true,
+			"version": "latest",
+			"dockerDashComposeVersion": "v2"
+		},
+		"ghcr.io/devcontainers/features/python:1": {
+			"version": "os-provided"
+		}
+	},
+	"postCreateCommand": "./mvnw install -T1C -DskipTests",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"streetsidesoftware.code-spell-checker",
+				"vscjava.vscode-java-pack",
+				"ms-python.python",
+				"ms-azuretools.vscode-docker",
+				"lextudio.restructuredtext"
+			]
+		}
+	}
+}
