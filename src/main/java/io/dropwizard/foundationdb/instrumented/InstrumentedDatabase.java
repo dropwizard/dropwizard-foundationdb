@@ -224,4 +224,28 @@ public class InstrumentedDatabase implements Database {
     public Executor getExecutor() {
         return database.getExecutor();
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public CompletableFuture<Boolean> blobbifyRangeBlocking(byte[] beginKey, byte[] endKey, Executor e) {
+        return database.blobbifyRangeBlocking(beginKey, endKey, e);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public CompletableFuture<Boolean> flushBlobRange(byte[] beginKey, byte[] endKey, boolean compact, long version, Executor e) {
+        return database.flushBlobRange(beginKey, endKey, compact, version, e);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public CompletableFuture<byte[]> getClientStatus(Executor e) {
+        return database.getClientStatus(e);
+    }
 }
