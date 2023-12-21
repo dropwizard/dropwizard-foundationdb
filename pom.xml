@@ -9,7 +9,7 @@
   </parent>
   <groupId>io.dropwizard.modules</groupId>
   <artifactId>dropwizard-foundationdb</artifactId>
-  <version>4.0.2</version>
+  <version>4.0.3-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>Dropwizard FoundationDB</name>
@@ -111,8 +111,4 @@
       </plugin>
     </plugins>
   </build>
-
-  <scm>
-    <tag>dropwizard-foundationdb-4.0.2</tag>
-  </scm>
 </project>
