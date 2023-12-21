@@ -2,7 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
-
+  <parent>
+    <groupId>io.dropwizard.modules</groupId>
+    <artifactId>module-parent</artifactId>
+    <version>3.0.0-rc.2</version>
+  </parent>
   <groupId>io.dropwizard.modules</groupId>
   <artifactId>dropwizard-foundationdb</artifactId>
   <version>3.0.2-SNAPSHOT</version>
@@ -10,42 +14,8 @@
 
   <name>Dropwizard FoundationDB</name>
   <description>Provides easy integration for Dropwizard applications with FoundationDB and various layer implementations.</description>
-  <url>https://github.com/dropwizard/dropwizard-foundationdb</url>
-
-  <licenses>
-    <license>
-      <name>Apache 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
-
-  <scm>
-    <developerConnection>scm:git:git@github.com:dropwizard/dropwizard-foundationdb.git</developerConnection>
-    <connection>scm:git:https://github.com/dropwizard/dropwizard-foundationdb.git</connection>
-    <url>https://github.com/dropwizard/dropwizard-foundationdb</url>
-    <tag>HEAD</tag>
-  </scm>
-
-  <ciManagement>
-    <system>GitHub Actions</system>
-    <url>https://github.com/dropwizard/dropwizard-foundationdb/actions</url>
-  </ciManagement>
-
-  <issueManagement>
-    <system>GitHub Issues</system>
-    <url>https://github.com/dropwizard/dropwizard-foundationdb/issues</url>
-  </issueManagement>
 
   <distributionManagement>
-    <snapshotRepository>
-      <id>ossrh</id>
-      <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
-    <repository>
-      <id>ossrh</id>
-      <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-    </repository>
     <site>
       <id>dropwizard-foundationdb</id>
       <url>http://dropwizard.github.io/dropwizard-foundationdb/${project.version}</url>
@@ -61,32 +31,11 @@
   </developers>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <maven.compiler.release>11</maven.compiler.release>
-    <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
-    <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
-
     <sonar.projectKey>dropwizard_dropwizard-foundationdb</sonar.projectKey>
-    <sonar.organization>dropwizard</sonar.organization>
-    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
-    <dropwizard.version>3.0.5</dropwizard.version>
     <foundationdb.version>7.3.27</foundationdb.version>
     <record-layer.version>2.8.110.0</record-layer.version>
   </properties>
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>io.dropwizard</groupId>
-        <artifactId>dropwizard-dependencies</artifactId>
-        <version>${dropwizard.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
 
   <dependencies>
     <dependency>
@@ -141,162 +90,25 @@
     <pluginManagement>
       <plugins>
         <plugin>
-          <groupId>org.sonarsource.scanner.maven</groupId>
-          <artifactId>sonar-maven-plugin</artifactId>
-          <version>3.10.0.2594</version>
-        </plugin>
-        <plugin>
-          <groupId>org.jacoco</groupId>
-          <artifactId>jacoco-maven-plugin</artifactId>
-          <version>0.8.11</version>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-failsafe-plugin</artifactId>
+          <version>3.2.3</version>
         </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
       <plugin>
-        <groupId>org.jacoco</groupId>
-        <artifactId>jacoco-maven-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
         <executions>
           <execution>
-            <id>prepare-agent</id>
             <goals>
-              <goal>prepare-agent</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>report</id>
-            <goals>
-              <goal>report</goal>
+              <goal>integration-test</goal>
+              <goal>verify</goal>
             </goals>
           </execution>
         </executions>
       </plugin>
     </plugins>
   </build>
-
-  <profiles>
-    <profile>
-      <id>release</id>
-      <activation>
-        <property>
-          <name>performRelease</name>
-          <value>true</value>
-        </property>
-      </activation>
-      <properties>
-        <maven.compiler.optimize>true</maven.compiler.optimize>
-        <gpg.keyname>EDA86E9FB607B5FC9223FB767D4868B53E31E7AD</gpg.keyname>
-      </properties>
-      <build>
-        <pluginManagement>
-          <plugins>
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-failsafe-plugin</artifactId>
-              <version>3.2.3</version>
-            </plugin>
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-source-plugin</artifactId>
-              <version>3.3.0</version>
-            </plugin>
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-javadoc-plugin</artifactId>
-              <version>3.6.3</version>
-            </plugin>
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-gpg-plugin</artifactId>
-              <version>3.1.0</version>
-            </plugin>
-            <plugin>
-              <groupId>org.sonatype.plugins</groupId>
-              <artifactId>nexus-staging-maven-plugin</artifactId>
-              <version>1.6.13</version>
-            </plugin>
-          </plugins>
-        </pluginManagement>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-failsafe-plugin</artifactId>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>integration-test</goal>
-                  <goal>verify</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-source-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>attach-sources</id>
-                <goals>
-                  <goal>jar-no-fork</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-javadoc-plugin</artifactId>
-            <configuration>
-              <doclint>none</doclint>
-              <quiet>true</quiet>
-            </configuration>
-            <executions>
-              <execution>
-                <id>attach-javadocs</id>
-                <goals>
-                  <goal>jar</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-gpg-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>sign-artifacts</id>
-                <phase>verify</phase>
-                <goals>
-                  <goal>sign</goal>
-                </goals>
-                <configuration>
-                  <gpgArguments>
-                    <arg>--pinentry-mode</arg>
-                    <arg>loopback</arg>
-                  </gpgArguments>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.sonatype.plugins</groupId>
-            <artifactId>nexus-staging-maven-plugin</artifactId>
-            <configuration>
-              <serverId>ossrh</serverId>
-              <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
-              <autoReleaseAfterClose>true</autoReleaseAfterClose>
-            </configuration>
-            <executions>
-              <execution>
-                <id>nexus-deploy</id>
-                <phase>deploy</phase>
-                <goals>
-                  <goal>deploy</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
 </project>
