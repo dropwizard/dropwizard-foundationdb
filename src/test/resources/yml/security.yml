@@ -1,3 +1,4 @@
+---
 type: multi-file
 certificateChainFilePath: /path/to/file
 keyFilePath: /path/to/file
