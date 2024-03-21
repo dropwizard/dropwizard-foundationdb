@@ -33,7 +33,7 @@
   <properties>
     <sonar.projectKey>dropwizard_dropwizard-foundationdb</sonar.projectKey>
 
-    <foundationdb.version>7.3.33</foundationdb.version>
+    <foundationdb.version>7.3.35</foundationdb.version>
     <record-layer.version>2.8.110.0</record-layer.version>
   </properties>
 
