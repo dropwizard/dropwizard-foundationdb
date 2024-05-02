@@ -2,18 +2,18 @@
 	"name": "Java",
 	"image": "mcr.microsoft.com/devcontainers/java:1-17@sha256:21a140cdc172dfc0c56195aab24fbf68c0e9c125addeb64f3848dfa4b1e8343c",
 	"features": {
-		"ghcr.io/devcontainers/features/java:1": {
+		"ghcr.io/devcontainers/features/java:1@sha256:5f3ec36d8accba9f48f5b37f8df6555fe1d62f2561f10eeb3641c1aa808a91cd": {
 			"version": "17",
 			"jdkDistro": "tem"
 		},
-		"ghcr.io/devcontainers/features/docker-in-docker:2": {
+		"ghcr.io/devcontainers/features/docker-in-docker:2@sha256:23ae11a86089da5f0b98a6edd603f91831802b7f2d5ef1e104e1b94a3beb546c": {
 			"moby": true,
 			"azureDnsAutoDetection": true,
 			"installDockerBuildx": true,
 			"version": "latest",
 			"dockerDashComposeVersion": "v2"
 		},
-		"ghcr.io/devcontainers/features/python:1": {
+		"ghcr.io/devcontainers/features/python:1@sha256:bf021f1800543f08bf029c449a3f25341be782b620802befa1f8e6ee51cf6cf6": {
 			"version": "os-provided"
 		}
 	},
