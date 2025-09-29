@@ -34,7 +34,7 @@
     <sonar.projectKey>dropwizard_dropwizard-foundationdb</sonar.projectKey>
 
     <foundationdb.version>7.4.3</foundationdb.version>
-    <record-layer.version>2.8.110.0</record-layer.version>
+    <record-layer.version>4.6.5.0</record-layer.version>
   </properties>
 
   <dependencies>
