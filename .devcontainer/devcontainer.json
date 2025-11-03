@@ -13,7 +13,7 @@
 			"version": "latest",
 			"dockerDashComposeVersion": "v2"
 		},
-		"ghcr.io/devcontainers/features/python:1@sha256:cf9b6d879790a594b459845b207c5e1762a0c8f954bb8033ff396e497f9c301b": {
+		"ghcr.io/devcontainers/features/python:1@sha256:fbcad6955caeecc5ad3f7886baf652e25cba5225a6c4c2287c536de2e5607511": {
 			"version": "os-provided"
 		}
 	},
