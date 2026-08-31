@@ -2,7 +2,7 @@
 	"name": "Java",
 	"image": "mcr.microsoft.com/devcontainers/java:3-17@sha256:458dda9eb5cc8eab850404d167587e8ebe73e56f6ab3a979a448da66dc6de381",
 	"features": {
-		"ghcr.io/devcontainers/features/java:1@sha256:8157bab2d8d71e40b2f3128c162fab763e2b11038fdd33784549290a5d386b48": {
+		"ghcr.io/devcontainers/features/java:1@sha256:7d2fc86e0dad756209cd68da6b2b43e6149a5e07232a9f20663c42a8ca1563ad": {
 			"version": "17",
 			"jdkDistro": "tem"
 		},
