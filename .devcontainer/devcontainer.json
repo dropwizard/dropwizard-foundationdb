@@ -6,7 +6,7 @@
 			"version": "17",
 			"jdkDistro": "tem"
 		},
-		"ghcr.io/devcontainers/features/docker-in-docker:4@sha256:7d979c4a36d595eb4ab79909caa3f396daf3b6152dcf38e8328ea4eff42206c7": {
+		"ghcr.io/devcontainers/features/docker-in-docker:4@sha256:2b44bcb32e75d5a3c028479f7f957cf7d5e42d81761373025a8d501dd3748f88": {
 			"moby": true,
 			"azureDnsAutoDetection": true,
 			"installDockerBuildx": true,
